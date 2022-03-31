@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.yfh.dczx.mapper.UserMapper">
+
+    <!--int insertByList(List<Student> studentList-->
+    <insert id="insertByList">
+        insert  into t_student values 
+        <foreach collection="studentList" item="student" separator=",">
+            (null,#{student.examNo},#{student.stuName},#{student.chinese},
+             #{student.math},#{student.english},#{student.politics},
+             #{student.history},#{student.geography},#{student.biology})
+        </foreach>
+    </insert>
+</mapper>

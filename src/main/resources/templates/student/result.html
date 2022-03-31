@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>全部学生成绩</title>
+  <div th:replace="common :: commonheader"></div>
+</head>
+<body>
+<div class="container">
+  <row class="col-md-10 col-xs-12">
+    <h3>查询结果</h3>
+    <table class="table table-hover table-striped">
+      <tr>
+        <th>考号</th>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>英语</th>
+        <th>政治</th>
+        <th>历史</th>
+        <th>地理</th>
+        <th>生物</th>
+        <th>总分</th>
+      </tr>
+      <tr th:object="${student}">
+        <td th:text="*{examNo}">1</td>
+        <td th:text="*{stuName}">12</td>
+        <td th:text="*{chinese}">123</td>
+        <td th:text="*{math}">1234</td>
+        <td th:text="*{english}">1234</td>
+        <td th:text="*{politics}">1234</td>
+        <td th:text="*{history}">1234</td>
+        <td th:text="*{geography}">1234</td>
+        <td th:text="*{biology}">1234</td>
+        <td th:text="*{totalScore}">1234</td>
+      </tr>
+    </table>
+  </row>
+</div>
+</body>
+</html>

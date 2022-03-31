@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>上传页面</title>
+    <div th:replace="common :: commonheader"></div>
+</head>
+<body>
+
+<div class="container">
+    <div class="col-md-8 col-md-offset-2 col-xs-12">
+        <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="excel">上传Excel</label>
+                <input type="file" id="excel" name="file">
+            </div>
+            <div class="form-group">
+                <label for="sheet">表格编号：</label>
+                <input type="text" id="sheet" name="sheet" placeholder="请输入第几张表格">
+            </div>
+            <div class="form-group">
+                <label for="startLine">成绩开始行：</label>
+                <input type="text" id="startLine" name="startLine" placeholder="请输入成绩开始行">
+            </div>
+            <div class="form-group">
+                <label for="endLine">成绩结束行：</label>
+                <input type="text" id="endLine" name="endLine" placeholder="成绩结束行">
+            </div>
+            <button type="submit" class="btn btn-default">上传</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
