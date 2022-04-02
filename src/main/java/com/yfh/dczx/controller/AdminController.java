@@ -50,4 +50,12 @@ public class AdminController {
         return "admin/list";
     }
 
+    @GetMapping("/admin/clear")
+    public String clear(Model model) {
+        userService.clearList();
+        return "admin/list";
+    }
+
+
+
 }

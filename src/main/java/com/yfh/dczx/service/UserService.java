@@ -16,9 +16,13 @@ public class UserService {
         return userMapper.getUserList();
     }
 
-    public Student getStudentByName(String name) {
+    public Student getStudentByName(String name, String class_no) {
         System.out.println(name + "查询成绩");
-        return userMapper.getStudentByName(name);
+        return userMapper.getStudentByName(name, class_no);
     }
 
+    public void clearList() {
+        System.out.println("清空表格信息");
+        userMapper.clearList();
+    }
 }

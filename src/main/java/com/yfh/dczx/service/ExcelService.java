@@ -28,7 +28,6 @@ public class ExcelService {
     private UserMapper userMapper;
 
 
-
     public Boolean excelToData(String fileName, MultipartFile file, Integer sheetNo, Integer startLine, Integer endLine) throws IOException {
 
         boolean notNull = false;
@@ -60,13 +59,13 @@ public class ExcelService {
 
         Sheet sheet = wb.getSheetAt(sheetNo - 1); // 表格sheet1
 
-        if(sheet!=null){
+        if (sheet != null) {
             notNull = true;
         }
 
         for (int r = startLine - 1; r < endLine; r++) {
             Row row = sheet.getRow(r);
-            if (row == null){
+            if (row == null) {
                 continue;
             }
 
@@ -76,8 +75,7 @@ public class ExcelService {
             String name = getCellValue(row.getCell(1)); // 姓名
 
 
-
-            Double chinese = getCellValue(row.getCell(2)) == "" ? 0.0: Double.parseDouble(getCellValue(row.getCell(2)));
+            Double chinese = getCellValue(row.getCell(2)) == "" ? 0.0 : Double.parseDouble(getCellValue(row.getCell(2)));
 
             Double math = getCellValue(row.getCell(3)) == "" ? 0.0 : Double.parseDouble(getCellValue(row.getCell(3)));
 
@@ -95,13 +93,13 @@ public class ExcelService {
 
         for (Student student : studentList) {
             String stuName = student.getStuName();
-            int cnt = userMapper.selectByName(stuName);
+            int cnt = userMapper.selectByNameAndExamNo(stuName, student.getExamNo());
             if (cnt == 0) {
                 userMapper.insertStudent(student);
-                System.out.println("添加一条信息");
+                System.out.println(student.getStuName() + "," + student.getExamNo() + "添加一条信息");
             } else {
                 userMapper.updateStudent(student);
-                System.out.println("更新一条信息");
+                System.out.println(student.getStuName() + "," + student.getExamNo() + "更新一条信息");
             }
 
         }
@@ -138,8 +136,7 @@ public class ExcelService {
                     Date date = HSSFDateUtil.getJavaDate(d);
                     SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
                     o = dformat.format(date);
-                }
-                else {
+                } else {
                     NumberFormat nf = NumberFormat.getInstance();
                     nf.setGroupingUsed(false);// true时的格式：1,234,567,890
                     o = nf.format(c.getNumericCellValue());//

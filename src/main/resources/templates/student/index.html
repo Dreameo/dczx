@@ -9,9 +9,15 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-8">
-            <h3>成绩查询</h3>
+            <h3>七年级成绩查询</h3>
             <label style="color: red" th:text="${msg}"></label>
             <form class="form-inline" th:action="@{/query}" method="get">
+                <div class="form-group">
+                    <label for="class_no">七年级：</label>
+                    <input type="text" class="form-control" id="class_no" name="class_no" placeholder="输入数字即可(1/2/3/4/5）">
+                    <span>班</span>
+                </div>
+
                 <div class="form-group">
                     <label for="name">姓名：</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="请输入学生姓名查询成绩">
